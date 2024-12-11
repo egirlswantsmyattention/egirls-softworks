@@ -1,0 +1,21 @@
+local Metatable = {}
+
+function Metatable:new(name, value)
+  local obj = {
+    name = name,
+    value = value
+  }
+  setmetatable(obj, self)
+  self.__index = self
+  return obj
+end
+
+function Metatable:display()
+  print("Name: " .. self.name .. ", Value: " .. self.value)
+end
+
+local item1 = Metatable:new("Sword", 100)
+local item2 = Metatable:new("Shield", 150)
+
+item1:display()
+item2:display()
